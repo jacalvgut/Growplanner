@@ -2,15 +2,13 @@ import React from 'react';
 import { GardenElementId } from '../../types/garden';
 import { handleElementClick } from '../../interaction/handleElementClick';
 
-export const Greenhouse: React.FC = () => {
+export const CircleIn1: React.FC = () => {
   return (
     <button
-      className="zone greenhouse"
-      onClick={() => handleElementClick(GardenElementId.GREENHOUSE, 'Invernadero')}
+      className="circle zone circle-in-1"
+      onClick={() => handleElementClick(GardenElementId.CIRCLE_IN_1, 'Pitaya 1')}
     >
-      Invernadero
+      Pitaya 1
     </button>
   );
 };
-
-
