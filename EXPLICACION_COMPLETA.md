@@ -16,8 +16,12 @@ GrowPlanner (La Casa Completa)
 │   ├── React (El sistema de construcción)
 │   ├── TypeScript (El lenguaje que habla)
 │   └── Vite (La herramienta que construye todo)
-└── Backend (El servidor que guarda información)
-    └── Python + FastAPI (El sistema que procesa datos)
+├── Backend (El servidor que guarda información)
+│   └── Python + FastAPI (El sistema que procesa datos)
+└── Scripts de Inicio (La forma fácil de iniciar todo)
+    ├── start-app.bat (Script principal de inicio)
+    ├── start-app.vbs (Ejecución silenciosa)
+    └── install-shortcut.ps1 (Instalador del acceso directo)
 ```
 
 ---
@@ -473,6 +477,21 @@ Los controladores son archivos que contienen la lógica de negocio, separada de 
 
 ### ⚙️ **CONFIGURACIÓN DEL PROYECTO**
 
+#### **Scripts de Inicio**
+
+El proyecto incluye varios scripts para facilitar el inicio de la aplicación:
+
+- **`start-app.bat`**: Script principal que inicia ambos servidores
+- **`start-app.vbs`**: Wrapper para ejecución silenciosa (usado por el acceso directo)
+- **`install-shortcut.ps1`**: Crea el acceso directo en el escritorio
+- **`crear-acceso-directo.bat`**: Script simple para ejecutar la instalación
+
+Estos scripts automatizan completamente el proceso de inicio, incluyendo:
+- Verificación e instalación de dependencias
+- Creación del entorno virtual de Python
+- Inicio de ambos servidores
+- Apertura automática del navegador
+
 #### **`package.json`**
 
 **¿Qué es?** El archivo que describe el proyecto y sus dependencias. Es como el "DNI" de tu aplicación.
@@ -571,10 +590,70 @@ Los controladores son archivos que contienen la lógica de negocio, separada de 
 
 ---
 
+## 🚀 INICIO Y EJECUCIÓN DE LA APLICACIÓN
+
+### **Sistema de Inicio Automático**
+
+GrowPlanner incluye un sistema completo para facilitar su inicio, permitiendo iniciar la aplicación con un simple doble clic desde el escritorio.
+
+#### **Archivos de Inicio:**
+
+1. **`start-app.bat`** - Script principal que:
+   - Verifica e instala automáticamente dependencias de Node.js si faltan
+   - Crea y configura el entorno virtual de Python si no existe
+   - Instala dependencias de Python automáticamente
+   - Inicia el servidor backend (puerto 8000) en una ventana separada
+   - Inicia el servidor frontend (puerto 5173) en otra ventana separada
+   - Abre automáticamente el navegador en `http://localhost:5173`
+   - Muestra mensajes informativos durante todo el proceso
+
+2. **`start-app.vbs`** - Wrapper silencioso que:
+   - Ejecuta el script batch sin mostrar ventanas de consola molestas
+   - Permite una experiencia más limpia al usuario
+   - Se usa como destino del acceso directo del escritorio
+
+3. **`install-shortcut.ps1`** - Script de instalación que:
+   - Crea un acceso directo en el escritorio llamado "GrowPlanner"
+   - Configura el acceso directo para ejecutar el script VBS
+   - Asigna un icono apropiado
+   - Solo necesita ejecutarse una vez
+
+4. **`crear-acceso-directo.bat`** - Script simple que:
+   - Ejecuta el script PowerShell de instalación
+   - Facilita la creación del acceso directo para usuarios no técnicos
+
+#### **Cómo Usar:**
+
+**Primera vez (Instalación):**
+1. Ejecutar `crear-acceso-directo.bat` o `install-shortcut.ps1`
+2. Se creará el acceso directo "GrowPlanner" en el escritorio
+
+**Uso diario:**
+1. Hacer doble clic en el icono "GrowPlanner" del escritorio
+2. La aplicación se iniciará automáticamente:
+   - Se abrirán dos ventanas de consola (backend y frontend)
+   - Se abrirá el navegador automáticamente
+   - Todo estará listo para usar
+
+**Nota:** La primera ejecución puede tardar más tiempo ya que instalará dependencias si es necesario. Las siguientes ejecuciones serán más rápidas.
+
+---
+
 ## 🔄 FLUJO COMPLETO DE LA APLICACIÓN
 
 ### 1. **Inicio de la Aplicación**
 
+**Desde el acceso directo:**
+```
+1. Usuario hace doble clic en "GrowPlanner" del escritorio
+2. start-app.vbs ejecuta start-app.bat silenciosamente
+3. start-app.bat verifica e instala dependencias si es necesario
+4. start-app.bat inicia el servidor backend (puerto 8000)
+5. start-app.bat inicia el servidor frontend (puerto 5173)
+6. start-app.bat abre el navegador en http://localhost:5173
+```
+
+**Carga en el navegador:**
 ```
 1. El navegador carga index.html
 2. index.html carga main.tsx

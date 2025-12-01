@@ -13,23 +13,26 @@ Aplicación web para la gestión y control de un huerto, permitiendo organizar y
 
 ```
 growplanner/
-├── src/
-│   ├── components/          # Componentes React
-│   │   ├── elements/       # Elementos individuales del jardín
-│   │   ├── GardenLayout.tsx # Layout principal
-│   │   └── FrutalesButton.tsx
-│   ├── constants/          # Constantes y configuración
-│   │   └── gardenElements.ts
-│   ├── types/              # Definiciones de tipos TypeScript
-│   │   └── garden.ts
-│   ├── interaction/        # Lógica de interacción
-│   │   └── handleElementClick.ts
-│   ├── App.tsx            # Componente raíz
-│   ├── main.tsx           # Punto de entrada
-│   └── styles.css         # Estilos globales
-├── backend/               # Backend Python (FastAPI)
+├── src/                    # Código fuente del frontend
+│   ├── app/              # Componentes principales
+│   ├── garden/           # Módulo del jardín
+│   │   ├── components/   # Componentes del jardín
+│   │   ├── constants/    # Registro de elementos
+│   │   ├── controllers/  # Lógica de negocio
+│   │   ├── hooks/        # Hooks personalizados
+│   │   └── store/        # Gestión de estado
+│   ├── ui/               # Componentes de UI
+│   ├── main.tsx          # Punto de entrada
+│   └── styles.css        # Estilos globales
+├── backend/              # Backend Python (FastAPI)
 │   ├── main.py
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── venv/            # Entorno virtual (se crea automáticamente)
+├── scripts/              # Scripts de inicio
+│   ├── start-app.bat     # Script principal de inicio
+│   ├── start-app.vbs     # Ejecución silenciosa
+│   ├── install-shortcut.ps1  # Instalador del acceso directo
+│   └── crear-acceso-directo.bat  # Script simple de instalación
 └── package.json
 ```
 
@@ -67,32 +70,75 @@ El diseño replica un plano de huerto con:
 
 ## 🛠️ Desarrollo
 
-### Instalación
+### Instalación Inicial
 
+#### Opción 1: Instalación Automática (Recomendada)
+
+1. **Crear el acceso directo en el escritorio:**
+   ```bash
+   # Ejecutar una sola vez para crear el acceso directo
+   crear-acceso-directo.bat
+   ```
+   O ejecutar directamente:
+   ```bash
+   powershell -ExecutionPolicy Bypass -File install-shortcut.ps1
+   ```
+
+2. **Usar el acceso directo:**
+   - Busca el icono "GrowPlanner" en tu escritorio
+   - Haz doble clic para iniciar la aplicación
+   - El script automáticamente:
+     - Instala dependencias si es necesario
+     - Inicia el servidor backend (puerto 8000)
+     - Inicia el servidor frontend (puerto 5173)
+     - Abre el navegador en `http://localhost:5173`
+
+#### Opción 2: Instalación Manual
+
+**Instalar dependencias de Node.js:**
 ```bash
 npm install
 ```
 
-### Ejecutar en desarrollo
+**Instalar dependencias de Python:**
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
 
+### Ejecutar la Aplicación
+
+#### Método Rápido (con acceso directo)
+- **Doble clic en "GrowPlanner" del escritorio** (después de la instalación inicial)
+
+#### Método Manual
+
+**Iniciar ambos servidores automáticamente:**
+```bash
+start-app.bat
+```
+
+**O iniciar manualmente:**
+
+Frontend:
 ```bash
 npm run dev
 ```
-
 La aplicación estará disponible en `http://localhost:5173`
+
+Backend:
+```bash
+cd backend
+venv\Scripts\activate
+uvicorn main:app --reload --port 8000
+```
 
 ### Build para producción
 
 ```bash
 npm run build
-```
-
-### Backend (Python)
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
 ```
 
 ## 📝 Próximas Mejoras
@@ -111,6 +157,22 @@ El proyecto está diseñado para ser fácilmente extensible:
 1. **Añadir nuevos elementos**: Agregar entrada en `GARDEN_ELEMENTS` y `GardenElementId`
 2. **Modificar estilos**: Editar `src/styles.css` con comentarios descriptivos
 3. **Añadir funcionalidad**: Extender `handleElementClick` para navegación o llamadas API
+
+## 🖥️ Scripts de Inicio
+
+El proyecto incluye scripts automatizados para facilitar el inicio:
+
+- **`start-app.bat`**: Inicia automáticamente frontend y backend
+- **`start-app.vbs`**: Ejecución silenciosa (usado por el acceso directo)
+- **`install-shortcut.ps1`**: Crea el acceso directo en el escritorio
+- **`crear-acceso-directo.bat`**: Ejecuta la instalación del acceso directo
+
+**Características:**
+- ✅ Instalación automática de dependencias
+- ✅ Creación automática del entorno virtual de Python
+- ✅ Inicio simultáneo de ambos servidores
+- ✅ Apertura automática del navegador
+- ✅ Acceso directo en el escritorio para inicio rápido
 
 ## 📄 Licencia
 
