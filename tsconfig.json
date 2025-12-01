@@ -14,7 +14,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@garden/*": ["src/garden/*"],
+      "@ui/*": ["src/ui/*"],
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/core/*"]
+    }
   },
   "include": ["src"]
 }
