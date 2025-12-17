@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+import routes
 
 app = FastAPI(title="GrowPlanner API")
 
@@ -11,6 +11,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Incluir rutas
+app.include_router(routes.router, prefix="/api", tags=["elements"])
 
 
 @app.get("/api/health")

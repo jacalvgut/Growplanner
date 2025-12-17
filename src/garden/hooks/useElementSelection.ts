@@ -2,24 +2,25 @@
  * Hook para gestionar la selección de elementos
  */
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GardenElementId } from '../types';
 import { useGardenStore } from './useGardenStore';
-import { handleElementClick } from '../controllers/interactionController';
-import { getElementById } from '../constants/elementRegistry';
+import { handleElementClick } from '../services/interactionService';
 
 /**
  * Hook para gestionar la selección de elementos
  */
 export const useElementSelection = () => {
   const { selectedElementId, selectElement } = useGardenStore();
+  const navigate = useNavigate();
 
   const select = useCallback((elementId: GardenElementId) => {
-    const element = getElementById(elementId);
     // Actualizar el store primero
     selectElement(elementId);
-    // Luego ejecutar la lógica de negocio
-    handleElementClick(elementId, element.name);
-  }, [selectElement]);
+    // Navegar a la vista detallada
+    const targetId = handleElementClick(elementId);
+    navigate(`/element/${targetId}`);
+  }, [selectElement, navigate]);
 
   const deselect = useCallback(() => {
     selectElement(null);

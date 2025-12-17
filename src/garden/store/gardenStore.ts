@@ -4,7 +4,7 @@
  */
 import { create } from 'zustand';
 import { GardenStore, GardenElementId, GardenElement } from '../types';
-import { getElementsInOrder } from '../constants/elementRegistry';
+import { getElementsInOrder } from '../constants';
 
 /**
  * Store del jardín

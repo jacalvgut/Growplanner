@@ -1,0 +1,47 @@
+/* ============================================
+   BANCALES
+   ============================================ */
+
+.bed {
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(135deg, #8B6F47 0%, #A0826D 50%, #8B6F47 100%);
+  border: 3px solid #6B5D4F;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bed-1 {
+  top: 6%;
+  left: 27%;
+  width: 11%;
+  height: 60%;
+}
+
+.bed-2 {
+  top: 6%;
+  left: 41%;
+  width: 11%;
+  height: 60%;
+}
+
+.bed-3 {
+  top: 6%;
+  left: 55%;
+  width: 11%;
+  height: 60%;
+}
+
+.bed-4 {
+  bottom: 6%;
+  left: 10%;
+  width: 26%;
+  height: 15%;
+}
+
+.bed-5 {
+  bottom: 6%;
+  left: 40%;
+  width: 26%;
+  height: 15%;
+}
+

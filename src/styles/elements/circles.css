@@ -1,0 +1,61 @@
+/* ============================================
+   CÍRCULOS
+   ============================================ */
+
+.circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a7c59 0%, #5a9d6e 50%, #4a7c59 100%);
+  border: 3px solid #3d6548;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circle-bottom-left {
+  bottom: 6%;
+  left: 2%;
+  width: 7%;
+  height: 10%;
+}
+
+.circle-in-1 {
+  top: 40%;
+  right: 22%;
+  width: 7%;
+  height: 12%;
+}
+
+.circle-in-2 {
+  top: 55%;
+  right: 22%;
+  width: 7%;
+  height: 12%;
+}
+
+.circle-right {
+  right: 3%;
+  width: 7%;
+  height: 12%;
+}
+
+.circle-right-1 {
+  top: 6%;
+}
+
+.circle-right-2 {
+  top: 22%;
+}
+
+.circle-right-3 {
+  top: 38%;
+}
+
+.circle-right-4 {
+  top: 54%;
+}
+
+.circle-bottom-right {
+  width: 70%;
+  height: 50%;
+}
+

@@ -1,0 +1,71 @@
+/* ============================================
+   COMPONENTES UI
+   ============================================ */
+
+.frutales-button {
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100%;
+  padding: 1.5rem 0.5rem;
+  border: 4px solid #5a4a3a;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #4a7c59 0%, #5a9d6e 50%, #4a7c59 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  box-sizing: border-box;
+}
+
+.frutales-button:hover {
+  background: linear-gradient(135deg, #5a9d6e 0%, #6aad7e 50%, #5a9d6e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.frutales-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.frutales-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.2em;
+}
+
+/* ============================================
+   MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .garden-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .garden {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .frutales-button {
+    width: 100%;
+    max-width: 300px;
+    height: 80px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .frutales-text {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    letter-spacing: 0.1em;
+  }
+}
+

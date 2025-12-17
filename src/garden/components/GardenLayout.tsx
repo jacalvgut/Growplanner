@@ -3,8 +3,7 @@
  * Organiza todos los elementos interactuables del huerto en su posición correspondiente
  */
 import React from 'react';
-import { getRenderOrder } from '../controllers/layoutController';
-import { getElementById } from '../constants/elementRegistry';
+import { getRenderOrder, getElementById } from '../constants';
 import { GardenElement } from './GardenElement';
 
 /**

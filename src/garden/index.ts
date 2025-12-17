@@ -10,19 +10,32 @@ export * from './types';
 export { GardenElement } from './components/GardenElement';
 export { GardenLayout } from './components/GardenLayout';
 
+// Vistas
+export { GardenView } from './views/GardenView';
+export { ElementDetailView } from './views/ElementDetailView';
+
 // Hooks
 export { useGardenStore, useGardenState, useGardenActions } from './hooks/useGardenStore';
 export { useElementSelection } from './hooks/useElementSelection';
 export { useElementHover } from './hooks/useElementHover';
-export { useGardenCanvas } from './hooks/useGardenCanvas';
+export { useElementDetail } from './hooks/useElementDetail';
+export { useCultivation } from './hooks/useCultivation';
+export { useActivities } from './hooks/useActivities';
 
 // Store
 export { useGardenStore as useGardenStoreDirect } from './store/gardenStore';
+export { useElementDetailStore } from './store/elementDetailStore';
 
-// Controladores
-export { handleElementClick, handleElementHover, handleClickOutside } from './controllers/interactionController';
-export { getRenderOrder, needsWrapper, getOrderedElements } from './controllers/layoutController';
+// Servicios
+export { handleElementClick } from './services/interactionService';
+export * from './services/cultivationService';
+export * from './services/activityService';
+export * from './services/planningService';
+export * from './services/alertService';
+
+// Adaptadores
+export * from './adapters/apiAdapter';
 
 // Constantes y Registry
-export { ELEMENT_REGISTRY, GARDEN_ELEMENTS_ORDER, getElementById, getElementsInOrder } from './constants/elementRegistry';
+export * from './constants';
 

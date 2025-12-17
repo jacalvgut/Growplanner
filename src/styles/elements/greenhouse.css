@@ -1,0 +1,15 @@
+/* ============================================
+   INVERNADERO
+   ============================================ */
+
+.greenhouse {
+  top: 6%;
+  left: 6%;
+  width: 18%;
+  height: 60%;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(144, 238, 144, 0.4) 0%, rgba(152, 251, 152, 0.5) 100%);
+  border: 3px solid #4a7c59;
+  box-shadow: inset 0 0 20px rgba(144, 238, 144, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

@@ -1,0 +1,41 @@
+/* ============================================
+   JARDÍN PRINCIPAL
+   ============================================ */
+
+/**
+ * Rectángulo principal del jardín
+ * Contiene todos los elementos interactuables (bancales, invernadero, composteras, círculos)
+ * Mantiene la relación de aspecto del diseño original (1141:696)
+ */
+.garden {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  border: 4px solid #5a4a3a;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #8B7355 0%, #A0826D 50%, #8B7355 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+  /* Relación de aspecto similar a la imagen original */
+  aspect-ratio: 1141 / 696;
+  min-width: 0;
+}
+
+/**
+ * Línea vertical divisoria dentro del jardín
+ * Separa las composteras de los círculos de la derecha
+ */
+.garden::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 12%;
+  width: 0.5%;
+  background: #6B5D4F;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+

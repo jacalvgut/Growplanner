@@ -1,0 +1,11 @@
+/**
+ * Punto de entrada de estilos
+ * Importa todos los módulos CSS organizados
+ */
+
+@import './layout.css';
+@import './garden.css';
+@import './elements/index.css';
+@import './components.css';
+@import './element-detail.css';
+

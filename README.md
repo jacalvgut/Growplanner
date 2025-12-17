@@ -28,11 +28,12 @@ growplanner/
 │   ├── main.py
 │   ├── requirements.txt
 │   └── venv/            # Entorno virtual (se crea automáticamente)
-├── scripts/              # Scripts de inicio
+├── scripts/              # Scripts de inicio y configuración
 │   ├── start-app.bat     # Script principal de inicio
 │   ├── start-app.vbs     # Ejecución silenciosa
-│   ├── install-shortcut.ps1  # Instalador del acceso directo
-│   └── crear-acceso-directo.bat  # Script simple de instalación
+│   └── setup/            # Scripts de instalación del acceso directo
+│       ├── install-shortcut.ps1  # Instalador del acceso directo
+│       └── crear-acceso-directo.bat  # Script simple de instalación
 └── package.json
 ```
 
@@ -77,11 +78,11 @@ El diseño replica un plano de huerto con:
 1. **Crear el acceso directo en el escritorio:**
    ```bash
    # Ejecutar una sola vez para crear el acceso directo
-   crear-acceso-directo.bat
+   scripts\setup\crear-acceso-directo.bat
    ```
    O ejecutar directamente:
    ```bash
-   powershell -ExecutionPolicy Bypass -File install-shortcut.ps1
+   powershell -ExecutionPolicy Bypass -File scripts\setup\install-shortcut.ps1
    ```
 
 2. **Usar el acceso directo:**
@@ -117,7 +118,7 @@ pip install -r requirements.txt
 
 **Iniciar ambos servidores automáticamente:**
 ```bash
-start-app.bat
+scripts\start-app.bat
 ```
 
 **O iniciar manualmente:**
@@ -162,10 +163,10 @@ El proyecto está diseñado para ser fácilmente extensible:
 
 El proyecto incluye scripts automatizados para facilitar el inicio:
 
-- **`start-app.bat`**: Inicia automáticamente frontend y backend
-- **`start-app.vbs`**: Ejecución silenciosa (usado por el acceso directo)
-- **`install-shortcut.ps1`**: Crea el acceso directo en el escritorio
-- **`crear-acceso-directo.bat`**: Ejecuta la instalación del acceso directo
+- **`scripts/start-app.bat`**: Inicia automáticamente frontend y backend
+- **`scripts/start-app.vbs`**: Ejecución silenciosa (usado por el acceso directo)
+- **`scripts/setup/install-shortcut.ps1`**: Crea el acceso directo en el escritorio
+- **`scripts/setup/crear-acceso-directo.bat`**: Ejecuta la instalación del acceso directo
 
 **Características:**
 - ✅ Instalación automática de dependencias

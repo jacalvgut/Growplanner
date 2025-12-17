@@ -1,0 +1,40 @@
+/* ============================================
+   ELEMENTOS INTERACTUABLES BASE
+   ============================================ */
+
+/**
+ * Estilos base para todos los elementos interactuables del jardín
+ * Todos los botones (bancales, invernadero, composteras, círculos) heredan estos estilos
+ */
+.zone {
+  border: 3px solid #5a4a3a;
+  background: #fafafa;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.zone:hover {
+  background: #e5ffe5;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.zone:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.greenhouse,
+.bed,
+.compost-main,
+.compost-small,
+.circle,
+.right-bottom-rect {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

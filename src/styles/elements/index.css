@@ -1,0 +1,11 @@
+/**
+ * Punto de entrada de estilos de elementos
+ * Importa todos los módulos CSS de elementos
+ */
+
+@import './base.css';
+@import './greenhouse.css';
+@import './beds.css';
+@import './circles.css';
+@import './compost.css';
+
