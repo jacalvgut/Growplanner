@@ -23,6 +23,7 @@ class Plant(BaseModel):
     seed_origin_details: Optional[str] = None
     status: str
     notes: Optional[str] = None
+    is_planted: Optional[bool] = False
     created_at: str
     updated_at: str
 
@@ -55,6 +56,7 @@ class ElementActivity(BaseModel):
     type: str
     date: str
     notes: Optional[str] = None
+    plant_ids: Optional[List[str]] = None
     created_at: str
 
 
@@ -62,6 +64,7 @@ class CreateElementActivityData(BaseModel):
     type: str
     date: str
     notes: Optional[str] = None
+    plant_ids: Optional[List[str]] = None
 
 
 class PlantActivity(BaseModel):

@@ -10,8 +10,25 @@ export type ElementActivityType =
   | 'riego'
   | 'abono'
   | 'limpieza_hierbas'
-  | 'preparacion_suelo'
-  | 'otro';
+  | 'airear_sustrato'
+  | 'fungicida';
+
+/**
+ * Tipo de actividad específica para composteras
+ */
+export type CompostActivityType = 
+  | 'alimentar'
+  | 'remover'
+  | 'regar';
+
+/**
+ * Tipo de actividad específica para círculos (árboles frutales)
+ */
+export type CircleActivityType = 
+  | 'regar'
+  | 'abonar'
+  | 'quitar_hierbas'
+  | 'podar';
 
 /**
  * Tipo de actividad a nivel de planta individual
@@ -22,6 +39,9 @@ export type PlantActivityType =
   | 'cosecha'
   | 'tratamiento'
   | 'observacion'
+  | 'riego'
+  | 'abono'
+  | 'fungicida'
   | 'otro';
 
 /**
@@ -33,6 +53,7 @@ export interface ElementActivity {
   type: ElementActivityType;
   date: string; // ISO date string
   notes?: string;
+  plantIds?: string[]; // IDs de plantas afectadas (para riego, abono, fungicida)
   createdAt: string;
 }
 
@@ -57,6 +78,7 @@ export interface CreateElementActivityData {
   type: ElementActivityType;
   date: string;
   notes?: string;
+  plantIds?: string[]; // IDs de plantas afectadas (para riego, abono, fungicida)
 }
 
 /**
@@ -68,5 +90,47 @@ export interface CreatePlantActivityData {
   notes?: string;
   quantity?: number;
   unit?: string;
+}
+
+/**
+ * Actividad registrada para composteras
+ */
+export interface CompostActivity {
+  id: string;
+  elementId: GardenElementId;
+  type: CompostActivityType;
+  date: string; // ISO date string
+  notes?: string;
+  createdAt: string;
+}
+
+/**
+ * Actividad registrada para círculos (árboles frutales)
+ */
+export interface CircleActivity {
+  id: string;
+  elementId: GardenElementId;
+  type: CircleActivityType;
+  date: string; // ISO date string
+  notes?: string;
+  createdAt: string;
+}
+
+/**
+ * Datos para crear una actividad de compostera
+ */
+export interface CreateCompostActivityData {
+  type: CompostActivityType;
+  date: string;
+  notes?: string;
+}
+
+/**
+ * Datos para crear una actividad de círculo
+ */
+export interface CreateCircleActivityData {
+  type: CircleActivityType;
+  date: string;
+  notes?: string;
 }
 

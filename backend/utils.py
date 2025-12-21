@@ -18,6 +18,7 @@ def plant_to_camel_case(plant_dict: Dict[str, Any]) -> Dict[str, Any]:
         "seedOriginDetails": plant_dict.get("seed_origin_details"),
         "status": plant_dict["status"],
         "notes": plant_dict.get("notes"),
+        "isPlanted": plant_dict.get("is_planted", False),
         "createdAt": plant_dict["created_at"],
         "updatedAt": plant_dict["updated_at"],
     }
@@ -35,6 +36,8 @@ def activity_to_camel_case(activity_dict: Dict[str, Any]) -> Dict[str, Any]:
     }
     if "plant_id" in activity_dict:
         result["plantId"] = activity_dict["plant_id"]
+    if "plant_ids" in activity_dict and activity_dict["plant_ids"] is not None:
+        result["plantIds"] = activity_dict["plant_ids"]
     if "quantity" in activity_dict:
         result["quantity"] = activity_dict["quantity"]
     if "unit" in activity_dict:

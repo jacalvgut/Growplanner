@@ -3,6 +3,7 @@
  */
 import { Plant, CreatePlantData, CreateMultiplePlantsData } from '../types';
 import * as api from '../adapters/apiAdapter';
+import { plantDataToSnakeCase, multiplePlantsDataToSnakeCase, plantUpdatesToSnakeCase } from '../utils/dataTransform';
 
 /**
  * Crea una nueva planta en un elemento
@@ -11,7 +12,9 @@ export async function createPlant(
   elementId: string,
   data: CreatePlantData
 ): Promise<Plant> {
-  return api.createPlant(elementId, data);
+  // Convertir datos de camelCase a snake_case para el backend
+  const snakeCaseData = plantDataToSnakeCase(data);
+  return api.createPlant(elementId, snakeCaseData);
 }
 
 /**
@@ -21,7 +24,9 @@ export async function createMultiplePlants(
   elementId: string,
   data: CreateMultiplePlantsData
 ): Promise<Plant[]> {
-  const response = await api.createMultiplePlants(elementId, data);
+  // Convertir datos de camelCase a snake_case para el backend
+  const snakeCaseData = multiplePlantsDataToSnakeCase(data);
+  const response = await api.createMultiplePlants(elementId, snakeCaseData);
   return response.plants || [];
 }
 
@@ -33,7 +38,9 @@ export async function updatePlant(
   plantId: string,
   updates: Partial<Plant>
 ): Promise<Plant> {
-  return api.updatePlant(elementId, plantId, updates);
+  // Convertir actualizaciones de camelCase a snake_case
+  const snakeCaseUpdates = plantUpdatesToSnakeCase(updates as Record<string, unknown>);
+  return api.updatePlant(elementId, plantId, snakeCaseUpdates);
 }
 
 /**

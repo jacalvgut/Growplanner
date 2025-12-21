@@ -5,7 +5,6 @@
 import React from 'react';
 import { GardenElement } from '../../types';
 import { PlantCanvas } from './PlantCanvas';
-import { ActivityButtons } from './ActivityButtons';
 import { ActivityTimeline } from './ActivityTimeline';
 import { AlertsPanel } from './AlertsPanel';
 import { BackendConnectionError } from './BackendConnectionError';
@@ -49,8 +48,10 @@ export const ElementDetailContent: React.FC<ElementDetailContentProps> = ({
   return (
     <div className="element-detail-content">
       <div className="element-detail-main">
-        <PlantCanvas element={element} detailData={detailData} />
-        <ActivityButtons element={element} detailData={detailData} />
+        <PlantCanvas 
+          element={element} 
+          detailData={detailData}
+        />
       </div>
       <div className="element-detail-sidebar">
         <ActivityTimeline detailData={detailData} />

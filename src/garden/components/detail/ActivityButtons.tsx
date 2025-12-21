@@ -9,6 +9,9 @@ import { ActivityForm } from './ActivityForm';
 interface ActivityButtonsProps {
   element: GardenElement;
   detailData: ReturnType<typeof import('../../hooks/useElementDetail').useElementDetail>;
+  onPlantSelectionMode?: (enabled: boolean) => void;
+  selectedPlantIds?: string[];
+  onSelectedPlantIdsChange?: (plantIds: string[]) => void;
 }
 
 /**
@@ -17,6 +20,9 @@ interface ActivityButtonsProps {
 export const ActivityButtons: React.FC<ActivityButtonsProps> = ({
   element,
   detailData,
+  onPlantSelectionMode,
+  selectedPlantIds,
+  onSelectedPlantIdsChange,
 }) => {
   const { addElementActivity } = useActivities(element.id);
   const [showForm, setShowForm] = useState(false);
@@ -31,8 +37,8 @@ export const ActivityButtons: React.FC<ActivityButtonsProps> = ({
     { type: 'riego', label: 'Regar' },
     { type: 'abono', label: 'Abonar' },
     { type: 'limpieza_hierbas', label: 'Limpiar hierbas' },
-    { type: 'preparacion_suelo', label: 'Preparar suelo' },
-    { type: 'otro', label: 'Otra actividad' },
+    { type: 'airear_sustrato', label: 'Airear Sustrato' },
+    { type: 'fungicida', label: 'Fungicida' },
   ];
 
   return (
@@ -56,7 +62,16 @@ export const ActivityButtons: React.FC<ActivityButtonsProps> = ({
           onClose={() => {
             setShowForm(false);
             setActivityType(null);
+            if (onPlantSelectionMode) {
+              onPlantSelectionMode(false);
+            }
+            if (onSelectedPlantIdsChange) {
+              onSelectedPlantIdsChange([]);
+            }
           }}
+          onPlantSelectionMode={onPlantSelectionMode}
+          selectedPlantIds={selectedPlantIds}
+          onSelectedPlantIdsChange={onSelectedPlantIdsChange}
         />
       )}
     </div>

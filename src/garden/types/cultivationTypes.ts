@@ -44,6 +44,7 @@ export interface Plant {
   seedOriginDetails?: string; // Detalles adicionales del origen
   status: PlantStatus;
   notes?: string;
+  isPlanted?: boolean; // Indica si la planta está fijada en su posición
   createdAt: string;
   updatedAt: string;
 }

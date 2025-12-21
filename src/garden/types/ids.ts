@@ -20,3 +20,18 @@ export enum GardenElementId {
   CIRCLE_BOTTOM_RIGHT = 'circle-bottom-right',
 }
 
+/**
+ * Identificadores únicos de los árboles frutales
+ */
+export enum FruitTreeId {
+  AGUACATERO_HASH = 'aguacatero-hash',
+  AGUACATERO_CUBA = 'aguacatero-cuba',
+  NARANJERO_1 = 'naranjero-1',
+  NARANJERO_2 = 'naranjero-2',
+  PERAL = 'peral',
+  MANZANERO = 'manzanero',
+  CIRUELERO = 'ciruelero',
+  LIMONERO = 'limonero',
+  MANDARINO = 'mandarino',
+}
+

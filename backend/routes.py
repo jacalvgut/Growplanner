@@ -83,6 +83,7 @@ async def create_plant(element_id: str, data: CreatePlantData):
         "seed_origin_details": data.seed_origin_details,
         "status": "germinando",
         "notes": data.notes,
+        "is_planted": False,  # Por defecto, las plantas nuevas no están plantadas
         "created_at": now,
         "updated_at": now,
     }
@@ -117,6 +118,7 @@ async def create_multiple_plants(
             "seed_origin_details": data.seed_origin_details,
             "status": "germinando",
             "notes": data.notes,
+            "is_planted": False,  # Por defecto, las plantas nuevas no están plantadas
             "created_at": now,
             "updated_at": now,
         }
@@ -148,6 +150,10 @@ async def update_plant(
             snake_case_updates["seed_origin"] = value
         elif key == "seedOriginDetails":
             snake_case_updates["seed_origin_details"] = value
+        elif key == "isPlanted":
+            snake_case_updates["is_planted"] = value
+        elif key == "is_planted":
+            snake_case_updates["is_planted"] = value
         else:
             snake_case_updates[key] = value
     
@@ -184,6 +190,7 @@ async def create_element_activity(
         "type": data.type,
         "date": data.date,
         "notes": data.notes,
+        "plant_ids": data.plant_ids if data.plant_ids else None,
         "created_at": datetime.now().isoformat(),
     }
     storage["element_activities"][activity_id] = activity
