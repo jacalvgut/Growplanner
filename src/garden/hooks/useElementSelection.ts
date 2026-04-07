@@ -3,7 +3,7 @@
  */
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GardenElementId } from '../types';
+import type { GardenElementKey } from '../types';
 import { useGardenStore } from './useGardenStore';
 import { handleElementClick } from '../services/interactionService';
 
@@ -14,19 +14,19 @@ export const useElementSelection = () => {
   const { selectedElementId, selectElement } = useGardenStore();
   const navigate = useNavigate();
 
-  const select = useCallback((elementId: GardenElementId) => {
+  const select = useCallback((elementId: GardenElementKey, gardenId: string) => {
     // Actualizar el store primero
     selectElement(elementId);
     // Navegar a la vista detallada
     const targetId = handleElementClick(elementId);
-    navigate(`/element/${targetId}`);
+    navigate(`/garden/${gardenId}/element/${targetId}`);
   }, [selectElement, navigate]);
 
   const deselect = useCallback(() => {
     selectElement(null);
   }, [selectElement]);
 
-  const isSelected = useCallback((elementId: GardenElementId) => {
+  const isSelected = useCallback((elementId: GardenElementKey) => {
     return selectedElementId === elementId;
   }, [selectedElementId]);
 

@@ -14,6 +14,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: DEV_SERVER_PORT,
+    proxy: {
+      // El frontend usa `/api` (relativo) y Vite lo redirige al backend local.
+      '/api': {
+        target: 'http://127.0.0.1:8001',
+        changeOrigin: true,
+      },
+    },
   },
   optimizeDeps: {
     force: true, // Forzar reoptimización de dependencias al iniciar

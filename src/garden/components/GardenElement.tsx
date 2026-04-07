@@ -6,9 +6,12 @@ import React from 'react';
 import { GardenElement as GardenElementType } from '../types';
 import { useElementSelection } from '../hooks/useElementSelection';
 import { useElementHover } from '../hooks/useElementHover';
+import type { GardenDesignElement } from '../../gardens/types';
 
 interface GardenElementProps {
   element: GardenElementType;
+  gardenId: string;
+  design?: GardenDesignElement;
 }
 
 /**
@@ -16,12 +19,12 @@ interface GardenElementProps {
  * Renderiza el elemento con su clase CSS correspondiente
  * Maneja automáticamente el caso especial de elementos con wrapper
  */
-export const GardenElement: React.FC<GardenElementProps> = ({ element }) => {
+export const GardenElement: React.FC<GardenElementProps> = ({ element, gardenId, design }) => {
   const { select, isSelected } = useElementSelection();
   const { onHover, onHoverEnd, isHovered } = useElementHover();
 
   const handleClick = (): void => {
-    select(element.id);
+    select(element.id, gardenId);
   };
 
   const handleMouseEnter = (): void => {
@@ -42,21 +45,24 @@ export const GardenElement: React.FC<GardenElementProps> = ({ element }) => {
       aria-label={`Ver detalles de ${element.displayName}`}
       aria-selected={isSelected(element.id)}
       data-element-id={element.id}
+      style={
+        design
+          ? {
+              position: 'absolute',
+              left: `${design.xPct}%`,
+              top: `${design.yPct}%`,
+              width: `${design.wPct}%`,
+              height: `${design.hPct}%`,
+              borderRadius: design.shape === 'circle' ? '999px' : undefined,
+            }
+          : undefined
+      }
     >
       {element.displayName}
     </button>
   );
 
-  // Si el elemento necesita wrapper (como circle-bottom-right)
-  if (element.type === 'circle' && element.hasWrapper) {
-    return (
-      <div className="right-bottom-rect">
-        {button}
-      </div>
-    );
-  }
-
-  // Renderizado normal sin wrapper
+  // En modo data-driven no necesitamos wrappers especiales.
   return button;
 };
 

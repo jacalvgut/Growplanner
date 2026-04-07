@@ -2,7 +2,7 @@
 Modelos de datos para la API
 """
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Literal
 from datetime import datetime
 
 
@@ -138,4 +138,86 @@ class ElementDetailResponse(BaseModel):
     action_plans: List[ActionPlan]
     alerts: List[Alert]
     last_updated: str
+
+
+# ============================
+#  Diseños de huertas (Gardens)
+# ============================
+
+
+GardenElementType = Literal[
+    "bed",
+    "tree",
+    "compost",
+    "greenhouse",
+    "circle",
+    "fence",
+    "gate",
+    "path",
+]
+
+GardenElementShape = Literal["rect", "circle"]
+
+
+class GardenDesignElement(BaseModel):
+    """
+    Elemento de diseño (posición/tamaño en % del contenedor).
+    """
+
+    id: str
+    type: GardenElementType
+    label: str
+    # Elementos rect/circle
+    shape: Optional[GardenElementShape] = None
+    xPct: Optional[float] = None
+    yPct: Optional[float] = None
+    wPct: Optional[float] = None
+    hPct: Optional[float] = None
+
+    # Elementos lineales (vallado/puerta/camino)
+    x1Pct: Optional[float] = None
+    y1Pct: Optional[float] = None
+    x2Pct: Optional[float] = None
+    y2Pct: Optional[float] = None
+    thicknessPct: Optional[float] = None
+    gateSwingDeg: Optional[float] = None
+    gateHinge: Optional[Literal["start", "end"]] = None
+
+    rotationDeg: Optional[float] = None
+
+
+class GardenFruitTree(BaseModel):
+    id: str
+    name: str
+    displayName: str
+
+
+class Garden(BaseModel):
+    id: str
+    name: str
+    updatedAt: str
+    showFrutalesButton: bool = True
+    fruitTrees: List[GardenFruitTree] = []
+    elements: List[GardenDesignElement]
+
+
+class GardenSummary(BaseModel):
+    id: str
+    name: str
+    updatedAt: str
+    showFrutalesButton: bool = True
+
+
+class CreateGardenRequest(BaseModel):
+    name: str
+    showFrutalesButton: bool = True
+    elements: Optional[List[GardenDesignElement]] = None
+    fruitTrees: Optional[List[GardenFruitTree]] = None
+
+
+class UpdateGardenRequest(BaseModel):
+    name: Optional[str] = None
+    showFrutalesButton: Optional[bool] = None
+    elements: Optional[List[GardenDesignElement]] = None
+    fruitTrees: Optional[List[GardenFruitTree]] = None
 

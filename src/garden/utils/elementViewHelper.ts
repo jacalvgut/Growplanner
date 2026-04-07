@@ -1,7 +1,7 @@
 /**
  * Utilidades para determinar qué vista mostrar según el tipo de elemento
  */
-import { GardenElement, GardenElementId } from '../types';
+import { GardenElement } from '../types';
 
 /**
  * Determina si un elemento es un bancal

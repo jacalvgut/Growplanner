@@ -3,7 +3,7 @@
  * Gestiona el estado de elementos, selección y hover sin lógica visual
  */
 import { create } from 'zustand';
-import { GardenStore, GardenElementId, GardenElement } from '../types';
+import type { GardenStore, GardenElementKey, GardenElement } from '../types';
 import { getElementsInOrder } from '../constants';
 
 /**
@@ -17,11 +17,11 @@ export const useGardenStore = create<GardenStore>((set) => ({
   hoveredElementId: null,
 
   // Acciones
-  selectElement: (elementId: GardenElementId | null) => {
+  selectElement: (elementId: GardenElementKey | null) => {
     set({ selectedElementId: elementId });
   },
 
-  hoverElement: (elementId: GardenElementId | null) => {
+  hoverElement: (elementId: GardenElementKey | null) => {
     set({ hoveredElementId: elementId });
   },
 
@@ -31,7 +31,7 @@ export const useGardenStore = create<GardenStore>((set) => ({
     }));
   },
 
-  removeElement: (elementId: GardenElementId) => {
+  removeElement: (elementId: GardenElementKey) => {
     set((state) => ({
       elements: state.elements.filter((el) => el.id !== elementId),
       selectedElementId: state.selectedElementId === elementId ? null : state.selectedElementId,

@@ -3,7 +3,9 @@
  * Centraliza todas las llamadas HTTP
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+// Por defecto usamos una URL relativa para que funcione con proxy en desarrollo
+// y con despliegues donde frontend y backend compartan origen.
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 /**
  * Cliente HTTP genérico

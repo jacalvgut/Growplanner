@@ -1,25 +1,26 @@
 /**
  * Tipos relacionados con el store del jardín
  */
-import { GardenElement, GardenElementId } from './elementTypes';
+import { GardenElement } from './elementTypes';
+import type { GardenElementKey } from './ids';
 
 /**
  * Estado del jardín en el store
  */
 export interface GardenState {
   elements: GardenElement[];
-  selectedElementId: GardenElementId | null;
-  hoveredElementId: GardenElementId | null;
+  selectedElementId: GardenElementKey | null;
+  hoveredElementId: GardenElementKey | null;
 }
 
 /**
  * Acciones del store del jardín
  */
 export interface GardenActions {
-  selectElement: (elementId: GardenElementId | null) => void;
-  hoverElement: (elementId: GardenElementId | null) => void;
+  selectElement: (elementId: GardenElementKey | null) => void;
+  hoverElement: (elementId: GardenElementKey | null) => void;
   addElement: (element: GardenElement) => void;
-  removeElement: (elementId: GardenElementId) => void;
+  removeElement: (elementId: GardenElementKey) => void;
   resetSelection: () => void;
 }
 

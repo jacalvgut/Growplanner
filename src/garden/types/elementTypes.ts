@@ -3,7 +3,7 @@
  * Usa discriminated unions para garantizar type safety
  */
 
-import type { GardenElementId } from './ids';
+import type { GardenElementKey } from './ids';
 
 /**
  * Tipo de elemento del jardín
@@ -24,7 +24,7 @@ export type ElementOrientation = 'vertical' | 'horizontal';
  * Base común para todos los elementos del jardín
  */
 interface BaseGardenElement {
-  id: GardenElementId;
+  id: GardenElementKey;
   type: GardenElementType;
   name: string;
   displayName: string;

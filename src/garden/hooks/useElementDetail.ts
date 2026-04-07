@@ -3,14 +3,14 @@
  * Combina store y servicios para proporcionar una API completa
  */
 import { useEffect, useState, useCallback } from 'react';
-import { GardenElementId } from '../types';
+import type { GardenElementKey } from '../types';
 import { useElementDetailStore } from '../store/elementDetailStore';
 import * as api from '../adapters/apiAdapter';
 
 /**
  * Hook para obtener y gestionar detalles de un elemento
  */
-export function useElementDetail(elementId: GardenElementId) {
+export function useElementDetail(elementId: GardenElementKey) {
   const store = useElementDetailStore();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

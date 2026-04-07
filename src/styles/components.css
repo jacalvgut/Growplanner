@@ -41,6 +41,42 @@
 }
 
 /* ============================================
+   BOTÓN EDITAR HUERTA (VISTA PRINCIPAL)
+   ============================================ */
+
+.garden-view__editBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.garden-view__editBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.garden-view__backBtn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.garden-view__backBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================
    MEDIA QUERIES
    ============================================ */
 

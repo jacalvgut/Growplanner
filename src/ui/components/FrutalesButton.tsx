@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 /**
  * Constantes del botón de frutales
@@ -15,9 +16,11 @@ const FRUTALES_BUTTON_TEXT = 'FRUTALES';
  */
 export const FrutalesButton: React.FC = () => {
   const navigate = useNavigate();
+  const { gardenId } = useParams<{ gardenId: string }>();
 
   const handleClick = (): void => {
-    navigate('/frutales');
+    if (gardenId) navigate(`/garden/${gardenId}/frutales`);
+    else navigate('/frutales');
   };
 
   return (

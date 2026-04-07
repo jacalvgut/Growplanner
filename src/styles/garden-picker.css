@@ -1,0 +1,142 @@
+.garden-picker {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.garden-picker__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.garden-picker__title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.garden-picker__subtitle {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.garden-picker__error {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 99, 71, 0.6);
+  background: rgba(255, 99, 71, 0.12);
+  border-radius: 8px;
+}
+
+.garden-picker__section {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.garden-picker__sectionTitle {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+.garden-picker__loading,
+.garden-picker__empty {
+  opacity: 0.85;
+}
+
+.garden-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.garden-cardWrap {
+  position: relative;
+}
+
+.garden-card {
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.9rem 0.9rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.garden-card:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.garden-card__name {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.garden-card__meta {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.garden-card__delete {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(244, 67, 54, 0.18);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.garden-card__delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.garden-picker__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.garden-picker__create {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.garden-picker__input {
+  flex: 1 1 320px;
+  min-width: 220px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.8);
+  color: inherit;
+}
+
+.garden-picker__primary {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(76, 175, 80, 0.35);
+  cursor: pointer;
+  color: inherit;
+  font-weight: 700;
+}
+
+.garden-picker__primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

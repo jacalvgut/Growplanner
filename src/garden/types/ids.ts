@@ -21,6 +21,13 @@ export enum GardenElementId {
 }
 
 /**
+ * Para diseños dinámicos, los IDs pueden ser cualquier string.
+ * Mantenemos el enum para la huerta "legacy", pero el resto del sistema
+ * debe tratar los IDs como string.
+ */
+export type GardenElementKey = string;
+
+/**
  * Identificadores únicos de los árboles frutales
  */
 export enum FruitTreeId {

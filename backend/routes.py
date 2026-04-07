@@ -16,9 +16,20 @@ from models import (
     CreateActionPlanData,
     Alert,
     ElementDetailResponse,
+    Garden,
+    GardenSummary,
+    CreateGardenRequest,
+    UpdateGardenRequest,
 )
 import uuid
 from datetime import datetime
+from garden_storage import (
+    list_gardens,
+    get_garden,
+    create_garden,
+    update_garden,
+    delete_garden,
+)
 
 router = APIRouter()
 
@@ -30,6 +41,71 @@ storage = {
     "action_plans": {},
     "alerts": {},
 }
+
+
+# ============================
+#  Gardens (diseños de huertas)
+# ============================
+
+
+@router.get("/gardens", response_model=List[GardenSummary])
+async def api_list_gardens():
+    gardens = list_gardens()
+    return [
+        GardenSummary(
+            id=g.id,
+            name=g.name,
+            updatedAt=g.updatedAt,
+            showFrutalesButton=getattr(g, "showFrutalesButton", True),
+        )
+        for g in gardens
+    ]
+
+
+@router.post("/gardens", response_model=Garden)
+async def api_create_garden(req: CreateGardenRequest):
+    garden_id = str(uuid.uuid4())
+    try:
+        return create_garden(
+            garden_id=garden_id,
+            name=req.name,
+            show_frutales_button=req.showFrutalesButton,
+            elements=req.elements,
+            fruit_trees=req.fruitTrees,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=409, detail=str(e))
+
+
+@router.get("/gardens/{garden_id}", response_model=Garden)
+async def api_get_garden(garden_id: str):
+    garden = get_garden(garden_id)
+    if not garden:
+        raise HTTPException(status_code=404, detail="Huerta no encontrada")
+    return garden
+
+
+@router.put("/gardens/{garden_id}", response_model=Garden)
+async def api_update_garden(garden_id: str, req: UpdateGardenRequest):
+    try:
+        return update_garden(
+            garden_id=garden_id,
+            name=req.name,
+            show_frutales_button=req.showFrutalesButton,
+            elements=req.elements,
+            fruit_trees=req.fruitTrees,
+        )
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Huerta no encontrada")
+
+
+@router.delete("/gardens/{garden_id}")
+async def api_delete_garden(garden_id: str):
+    try:
+        delete_garden(garden_id)
+        return {"message": "Huerta eliminada"}
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Huerta no encontrada")
 
 
 @router.get("/elements/{element_id}")

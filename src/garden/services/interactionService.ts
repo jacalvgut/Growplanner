@@ -2,7 +2,7 @@
  * Servicio de interacciones del jardín
  * Centraliza la lógica de negocio de interacciones con elementos
  */
-import { GardenElementId } from '../types';
+import type { GardenElementKey } from '../types';
 
 /**
  * Maneja la lógica de negocio del clic en un elemento del jardín
@@ -10,8 +10,9 @@ import { GardenElementId } from '../types';
  * @param elementId - ID único del elemento
  * @returns El ID del elemento para navegación
  */
-export const handleElementClick = (elementId: GardenElementId): GardenElementId => {
+export const handleElementClick = (elementId: GardenElementKey): GardenElementKey => {
   // Retornar el ID para que el componente use React Router
   return elementId;
 };
+
 

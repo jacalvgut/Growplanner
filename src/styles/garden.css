@@ -24,11 +24,19 @@
   min-width: 0;
 }
 
+.garden-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 /**
  * Línea vertical divisoria dentro del jardín
  * Separa las composteras de los círculos de la derecha
  */
-.garden::after {
+.garden.garden--with-divider::after {
   content: '';
   position: absolute;
   top: 0;
