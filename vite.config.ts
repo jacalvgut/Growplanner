@@ -15,6 +15,9 @@ export default defineConfig({
   server: {
     port: DEV_SERVER_PORT,
   },
+  optimizeDeps: {
+    force: true, // Forzar reoptimización de dependencias al iniciar
+  },
   resolve: {
     alias: {
       '@garden': path.resolve(__dirname, './src/garden'),
